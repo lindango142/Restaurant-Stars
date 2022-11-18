@@ -12,7 +12,7 @@ const AutoComplete = (props) => {
   const inputRef = useRef();
   const options = {
   componentRestrictions: { country: "us" },
-  fields: ["name", "address_components"],
+  fields: ["name", "address_components", "type"],
   types: ["restaurant", "cafe"]
   };
 
@@ -31,26 +31,19 @@ const AutoComplete = (props) => {
   }, []);
   const submit = (event) => {
     event.preventDefault();
-    props.addRestaurant(input.place.name, city);
-    // console.log(input, 2)
+    props.addRestaurant(input.place.name, city, input.place.types[0]);
     event.target[0].value = ''
-    // props.syncCards(props);
   };
-  const sync = (event) => {
-    event.preventDefault();
-    props.syncCards();
-  }
-
+  
   props.syncCards();
 
  return (
    <div>
     <form onSubmit={submit}>
      <label>enter place: </label>
-     <input ref={inputRef}/>
+     <input id="place"ref={inputRef}/>
      <button> Add </button>
     </form>
-    {/* <button onClick={sync}> Sync </button> */}
    </div>
  );
 };

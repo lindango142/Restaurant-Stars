@@ -8,6 +8,8 @@ const initialState = {
   status: 'not visited',
   review: '',
   sync: {},
+  update: {},
+  remove: {}
 };
 
 const reducer = (state = initialState, action) => {
@@ -22,6 +24,7 @@ const reducer = (state = initialState, action) => {
           address: action.payload.address,
           status: state.status,
           review: state.review,
+          type: action.payload.type
         }),
         sync: {
           id: state.id + 1,
@@ -33,24 +36,56 @@ const reducer = (state = initialState, action) => {
         id: state.id + 1,
       };
     }
-    
-    // case types.ADD_CARD: {
-    //   return {
-    //     ...state,
-    //   };
-    // }
 
-    // case types.DELETE_CARD: {
- 
-    //   return {
-    //     ...state,
-    //   };
-    // }
+    case types.CHANGE_STATUS: {
+      let update;
+      const newRestaurantList = [...state.restaurantList];
+      for (let i = 0; i < newRestaurantList.length; i++) {
+        if (newRestaurantList[i].name === action.payload.name) {
+          newRestaurantList[i].status = action.payload.status;
+          update = newRestaurantList[i]
+        }
+      }
+      return {
+        ...state,
+        restaurantList: newRestaurantList,
+        update: update
+      };
+    }
+    
+    case types.UPDATE_REVIEW: {
+      let update;
+      const newRestaurantList = [...state.restaurantList];
+      for (let i = 0; i < newRestaurantList.length; i++) {
+        if (newRestaurantList[i].name === action.payload.name) {
+          newRestaurantList[i].review = action.payload.review;
+          update = newRestaurantList[i]
+        }
+      }
+      return {
+        ...state,
+        restaurantList: newRestaurantList,
+        update: update
+      };
+    }
+
+    case types.DELETE_RESTAURANT: {
+      let data;
+      const clone = [];
+      for (let i = 0; i < state.restaurantList.length; i++) {
+        if (state.restaurantList[i].name !== action.payload) clone.push(state.restaurantList[i]);
+        if (state.restaurantList[i].name === action.payload) data = state.restaurantList[i];
+      }
+      return {
+        ...state,
+        restaurantList: clone,
+        remove: data,
+      };
+    }
 
     case types.SYNC_RESTAURANTS:
       return {
         ...state,
-        synced: true,
       };
 
     case types.LOAD_RESTAURANTS:
@@ -58,6 +93,16 @@ const reducer = (state = initialState, action) => {
         ...state,
         restaurantList: action.payload,
       };
+
+    case types.SYNC_UPDATE:
+      return {
+        ...state,
+      }
+
+    case types.SYNC_DELETE:
+      return {
+        ...state
+      }
 
     default: {
       return state;

@@ -10,7 +10,7 @@ const PORT = 3000;
 
 const app = express();
 
-const MONGO_URI = '';
+const MONGO_URI = 'mongodb+srv://linda:z1MtjJuyUBREM1fJ@card.m1b2zzv.mongodb.net/?retryWrites=true&w=majority';
 mongoose.connect(MONGO_URI, {
   // options for the connect method to parse the URI
   useNewUrlParser: true,

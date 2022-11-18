@@ -1,4 +1,4 @@
-input {
+#place {
   width: 300px;
   height: 20px;
   border: none;
@@ -10,23 +10,48 @@ body {
 }
 
 .marketBox {
+  display: flex;
+  flex-direction: column;
   background: white;
+  width: 430px;
   border: 1px solid rgb(185, 185, 185);
   border-radius: 10px;
-  width: 300px;
+  margin: 10px;
+}
+
+.details-and-delete {
   display: flex;
   align-items: start;
   justify-content: space-between;
-  margin: 20px;
 }
 
 .details {
   padding: 10px;
 }
 
-button {
-  margin: 10px;
-}
+.thumbs {
+  border-left: none;
+  border-bottom: none;
+  border-top: 1px solid rgb(197, 197, 197);
+  border-right: 1px solid rgb(197, 197, 197);
+  background-color: transparent;
+  position: relative;
+  width: 50%;
+  margin: 0;
+ }
+
+ .thumbs:hover {
+  cursor: pointer;
+ }
+
+ .thumbs2 {
+  border: none;
+  border-top: 1px solid rgb(197, 197, 197);
+  background-color: transparent;
+  position: relative;
+  width: 50%;
+  margin: 0;
+ }
 
 #city {
   font-size: 15px;
@@ -51,3 +76,29 @@ button {
  .pac-item:hover {
   background: #6666;
  }
+
+ #review {
+  border: 1px solid gray;
+  border-radius: 10px;
+  width: 360px;
+  padding: 5px;
+ }
+
+#delete {
+  background-color: transparent;
+  border: none;
+  margin: 10px;
+  font-size: 15px;
+}
+
+#delete:hover {
+  cursor: pointer;
+}
+
+#green {
+  color: green;
+}
+
+#red {
+  color: red
+}

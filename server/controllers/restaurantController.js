@@ -22,4 +22,21 @@ restaurantController.addRestaurant = (req, res, next) => {
   })
 }
 
+restaurantController.updateRestaurant = (req, res, next) => {
+  // console.log(req.body)
+  Restaurant.findOneAndUpdate({ name: req.body.name }, { review: req.body.review, status: req.body.status }, (err, updated) => {
+    if (err) return next(err);
+    return next();
+  })
+}
+
+restaurantController.deleteRestaurant = (req, res, next) => {
+  console.log(req.body, 'delete')
+  console.log('hi');
+  Restaurant.findOneAndDelete({ name: req.body.name }, (err, updated) => {
+    if (err) return next(err);
+    return next();
+  })
+}
+
 module.exports = restaurantController;
