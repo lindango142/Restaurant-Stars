@@ -15,7 +15,7 @@ mongoose.connect(MONGO_URI, {
   // options for the connect method to parse the URI
   useNewUrlParser: true,
   useUnifiedTopology: true,
-  // sets the name of the DB that the collections are part of
+  // sets the name of the DB that our collections are part of
   dbName: 'card'
 })
   .then(() => console.log('Connected to Mongo DB.'))
@@ -25,13 +25,18 @@ app.use(express.json());
 app.use(express.urlencoded());
 // app.use(cookieParser())
 
-
 app.get('/restaurants', restaurantController.getAllRestaurants, (req, res) => {
   res.status(200).json(res.locals.restaurants)
 })
 app.post('/restaurants', restaurantController.addRestaurant, (req, res) => {
   res.status(200);
 });
+app.put('/restaurants', restaurantController.updateRestaurant, (req, res) => {
+  res.status(200);
+})
+app.delete('/restaurants', restaurantController.deleteRestaurant, (req, res) => {
+  res.status(200);
+})
 
 // root
 app.use('/build', express.static(path.join(__dirname, '../build')));

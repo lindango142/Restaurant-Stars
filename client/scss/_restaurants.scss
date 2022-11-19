@@ -1,22 +1,99 @@
-#place {
-  width: 300px;
-  height: 20px;
-  border: none;
-  border-radius: 5px;
+body {
+  background-image: url("https://img.freepik.com/free-vector/pastel-ombre-background-pink-purple_53876-120750.jpg?w=2000");
+  // background-color: antiquewhite;
 }
 
-body {
-  background: antiquewhite;
+nav {
+  color: white;
+  font-family: 'nunito';
+  font-size: 60px;
+  text-align: center;
+  border-radius: 8px;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  font-weight: 800;
+}
+
+.container {
+  background-color: white;
+  border: 1px solid rgb(190, 190, 190);
+  margin: 20px;
+  margin-top: 0;
+  border-radius: 10px;
+  min-height: 620px;
+  max-width: 100%;
+  box-shadow: 5px 5px 5px rgba(135, 135, 135, 0.1);
+}
+
+.mapContainer {
+  margin-left: 30px;
+  margin-right: 30px;
+  width: 30%;
+  margin-left: 50px;
+}
+
+.displayBox {
+  align-self: flex-start;
+  width: 930px;
+  background-color: white;
+  border-radius: 10px;
+  margin-top: 10px;
+  margin-right: 10px;
+  height: 570px;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#reviewForm {
+  display: flex;
+  align-items: center;
+}
+
+#reviewInput {
+  width: 310px;
+  height: 15px;
+  margin-right: 5px;
+  border-radius: 5px;
+  padding: 3px 5px;
+}
+
+#placeInput {
+  width: 300px;
+  height: 20px;
+  border: 1px solid gray;
+  border-radius: 5px;
+  margin-right: 5px;
+}
+
+#add, #addPlace {
+  padding: 2px 9px;
+  background-color: white;
+  border: 1px solid gray;
+  border-radius: 3px;
+}
+
+#add:hover, #addPlace:hover {
+  cursor: pointer;
 }
 
 .marketBox {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   background: white;
   width: 430px;
   border: 1px solid rgb(185, 185, 185);
   border-radius: 10px;
   margin: 10px;
+  box-shadow: 5px 5px 5px rgba(0,0,0,0.1);
+  transition:0.3s;
+}
+
+.marketBox:hover {
+  transform: scale(1.03);
+  box-shadow: 7px 7px 7px rgba(0,0,0,0.1);
 }
 
 .details-and-delete {
@@ -38,6 +115,7 @@ body {
   position: relative;
   width: 50%;
   margin: 0;
+  padding-top: 5px;
  }
 
  .thumbs:hover {
@@ -51,7 +129,12 @@ body {
   position: relative;
   width: 50%;
   margin: 0;
+  padding-top: 5px;
  }
+
+.thumbs2:hover {
+  cursor: pointer;
+}
 
 #city {
   font-size: 15px;
@@ -101,4 +184,14 @@ body {
 
 #red {
   color: red
+}
+
+.innerbox {
+  display: flex;
+  align-items: center;
+}
+
+.outerBox {
+  align-self: flex-start;
+  background-color: white;
 }

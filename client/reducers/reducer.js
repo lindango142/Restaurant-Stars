@@ -74,15 +74,20 @@ const reducer = (state = initialState, action) => {
 
     case types.DELETE_RESTAURANT: {
       let data;
+      const marks = [];
       const clone = [];
       for (let i = 0; i < state.restaurantList.length; i++) {
-        if (state.restaurantList[i].name !== action.payload) clone.push(state.restaurantList[i]);
+        if (state.restaurantList[i].name !== action.payload) {
+          clone.push(state.restaurantList[i]);
+          marks.push(state.markers[i])
+        }
         if (state.restaurantList[i].name === action.payload) data = state.restaurantList[i];
       }
       return {
         ...state,
         restaurantList: clone,
         remove: data,
+        markers: marks
       };
     }
 

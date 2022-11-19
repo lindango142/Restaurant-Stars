@@ -18,17 +18,13 @@ const RestaurantsDisplay = props => {
       remove={props.remove}
     />
     );
-      
   }
-  // console.log(props.syncDelete)
   return (
     <div className="displayBox">
-      <h4>Restaurants</h4>
-      {cards}
-      {/* <Restaurants restaurantList={props.restaurantList}/> */}
-      {/* <div className="allMarkets">
-        {props.marketList.map((market, idx) => marketMaker(market, idx, props))}
-      </div> */}
+      <h2 style={{'font-family': 'nunito', 'color': 'rgb(145, 143, 143)', }}>Restaurants</h2>
+      <div className='cards'>
+        {cards} 
+      </div>
     </div>
   )
 };

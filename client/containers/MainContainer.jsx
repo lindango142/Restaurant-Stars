@@ -15,8 +15,9 @@ class MainContainer extends Component {
 
   render() {
     return(
-      <div className="container">
-        <div className="outerBox">
+      <div id="full">
+        <nav>REVIEWS</nav>
+        <div className="container">
           { /* Start adding components here... */ }
           <RestaurantsContainer />
         </div>

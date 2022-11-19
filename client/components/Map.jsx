@@ -30,10 +30,9 @@ export class MapContainer extends Component {
         <Map 
           google={window.google} 
           zoom={8} 
-          style={{width: '100%', height: '100%', position: 'relative', 'border-radius': "10px", margin: "10px"}} 
+          style={{width: '100%', height: '100%', position: 'relative', 'border-radius': "10px", 'margin-top': "10px", border: '1px solid rgb(198, 224, 255)', 'box-shadow': '5px 5px 5px rgba(0,0,0,0.1)'}} 
           containerStyle={{width: "400px", height: '400px', position: 'relative'}}
-          initialCenter={{lat: 34.06207, lng:-118.03183}}
-        >
+          initialCenter={{lat: 34.06207, lng:-118.03183}}>
           {marks}
           <InfoWindow
             marker={this.state.activeMarker}

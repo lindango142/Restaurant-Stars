@@ -39,11 +39,11 @@ const AutoComplete = (props) => {
   props.syncCards();
 
  return (
-   <div>
+   <div className="mapContainer">
     <form onSubmit={submit}>
-     <label>enter place: </label>
-     <input id="place"ref={inputRef}/>
-     <button> Add </button>
+     <label style={{'font-family': 'nunito'}}>Store: </label>
+     <input id="placeInput" ref={inputRef}/>
+     <button id="addPlace"> Add </button>
     </form>
     <MapContainer markers={props.markers}/>
    </div>
