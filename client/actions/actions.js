@@ -1,9 +1,9 @@
 import axios from 'axios';
 import * as types from '../constants/actionTypes';
 
-export const addRestaurantActionCreator = (name, address, type) => ({
+export const addRestaurantActionCreator = (name, address, mark) => ({
   type: types.ADD_RESTAURANT,
-  payload: { name: name, address: address, type: type }
+  payload: { name: name, address: address, mark: mark }
 });
 
 export const changeStatusActionCreator = (name, status) => ({

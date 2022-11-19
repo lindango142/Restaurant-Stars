@@ -29,8 +29,6 @@ const Restaurants = ({restaurantList, updateRev, syncCards, sync, syncUpdate, ch
   }
   
   syncUpdate();
-  // syncDelete(remove);
-  // console.log(remove)
 
   if (restaurantList.review) review.push(<p><strong>Review: </strong> {restaurantList.review} </p>)
   if (restaurantList.status !== 'not visited') reviewForm.push(<form onSubmit={reviewSub}>

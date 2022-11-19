@@ -9,13 +9,14 @@ const mapStateToProps = ({ restaurants }) => ({
   restaurantList: restaurants.restaurantList,
   sync: restaurants.sync,
   update: restaurants.update,
-  remove: restaurants.remove
+  remove: restaurants.remove,
+  markers: restaurants.markers
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);
 
 const RestaurantsContainer = props => {
-  if (Object.keys(props.remove).length) props.syncDelete(props.remove);
+  // if (Object.keys(props.remove).length) props.syncDelete(props.remove);
   return (
     <div className="innerbox">
       <AutoComplete
@@ -23,6 +24,7 @@ const RestaurantsContainer = props => {
         sync={props.sync}
         addRestaurant={props.addRestaurantActionCreator}
         syncCards={props.syncActionCreator}
+        markers={props.markers}
       />
       <RestaurantsDisplay
         restaurantList={props.restaurantList}

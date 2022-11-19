@@ -9,7 +9,8 @@ const initialState = {
   review: '',
   sync: {},
   update: {},
-  remove: {}
+  remove: {},
+  markers: []
 };
 
 const reducer = (state = initialState, action) => {
@@ -24,7 +25,7 @@ const reducer = (state = initialState, action) => {
           address: action.payload.address,
           status: state.status,
           review: state.review,
-          type: action.payload.type
+          markers: state.markers.concat(action.payload.mark)
         }),
         sync: {
           id: state.id + 1,
@@ -32,8 +33,10 @@ const reducer = (state = initialState, action) => {
           address: action.payload.address,
           status: state.status,
           review: state.review,
+          markers: state.markers.concat(action.payload.mark)
         },
         id: state.id + 1,
+        markers: state.markers.concat(action.payload.mark)
       };
     }
 

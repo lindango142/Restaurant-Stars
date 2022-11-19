@@ -2,6 +2,7 @@ import React, { useRef, useEffect, Component } from "react";
 import { connect } from 'react-redux';
 // import actions from action creators file
 import * as actions from '../actions/actions';
+import { MapContainer } from "./Map.jsx";
 // import child components...
 
 let input;
@@ -12,7 +13,7 @@ const AutoComplete = (props) => {
   const inputRef = useRef();
   const options = {
   componentRestrictions: { country: "us" },
-  fields: ["name", "address_components", "type"],
+  fields: ["name", "address_components", "geometry/location"],
   types: ["restaurant", "cafe"]
   };
 
@@ -31,7 +32,7 @@ const AutoComplete = (props) => {
   }, []);
   const submit = (event) => {
     event.preventDefault();
-    props.addRestaurant(input.place.name, city, input.place.types[0]);
+    props.addRestaurant(input.place.name, city, { lat: input.place.geometry.location.lat(), lng: input.place.geometry.location.lng()});
     event.target[0].value = ''
   };
   
@@ -44,6 +45,7 @@ const AutoComplete = (props) => {
      <input id="place"ref={inputRef}/>
      <button> Add </button>
     </form>
+    <MapContainer markers={props.markers}/>
    </div>
  );
 };
