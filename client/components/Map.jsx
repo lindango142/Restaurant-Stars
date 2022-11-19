@@ -23,8 +23,8 @@ export class MapContainer extends Component {
   
   render() {
     const marks = [];
-    for (let i = 0; i < this.props.markers.length; i++) {
-      marks.push(<Marker position={this.props.markers[i]}/>)
+    for (let i = 0; i < this.props.restaurantList.length; i++) {
+      marks.push(<Marker position={this.props.restaurantList[i].marks}/>)
     }
     return (
         <Map 

@@ -8,7 +8,8 @@ const restaurantSchema = new Schema({
   name: {type: String, required: true},
   address: {type: String, required: true},
   status: {type: String, required: true},
-  review: {type: String}
+  review: {type: String},
+  marks: {type: Object}
 });
 
 module.exports = mongoose.model('Restaurant', restaurantSchema);

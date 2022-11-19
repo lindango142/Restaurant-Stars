@@ -45,7 +45,7 @@ const AutoComplete = (props) => {
      <input id="placeInput" ref={inputRef}/>
      <button id="addPlace"> Add </button>
     </form>
-    <MapContainer markers={props.markers}/>
+    <MapContainer restaurantList={props.restaurantList}/>
    </div>
  );
 };

@@ -1,0 +1,66 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.signInForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  width: 200px;
+  height: 180px;
+}
+
+.signInInput {
+  width: 200px;
+  height: 30px;
+  border-radius: 10px;
+  border: 1px solid gray;
+  align-self: flex-start;
+  padding: 10px;
+}
+
+.signInBox {
+  margin-top: 180px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 350px;
+  height: 350px;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px rgba(135, 135, 135, 0.1);
+}
+
+.signInBox #signInTitle {
+  top: 120px;
+  position: absolute;
+  font-family: 'nunito';
+  font-size: 40px;
+  color: rgb(206, 228, 247);
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.signInBox .signInP {
+  font-family: 'nunito';
+  margin-bottom: 0;
+  align-self: flex-start;
+}
+
+.signInBox button {
+  margin-top: 10px;
+  align-self: center;
+  background-color: rgb(228, 240, 251);
+  border: none;
+  border-radius: 5px;
+  align-self: stretch;
+  padding: 7px 0px;
+  box-shadow: 5px 5px 5px rgba(135, 135, 135, 0.1);
+}
+.signInBox button:hover {
+  background-color: rgb(235, 242, 248);
+  cursor: pointer;
+}

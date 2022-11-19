@@ -5,25 +5,29 @@ module.exports = {
   entry: './client/index.js',
   output: {
     path: path.resolve(__dirname, 'build'),
-    filename: 'bundle.js',
+    filename: '[name].js',
   },
   mode: 'development',
   plugins: [
     new HtmlWebpackPlugin({
-      template: "./reviews.html"
-    })
+      template: "./login.html", 
+    }),
   ],
   devServer: {
-    // proxy: {
-    //   '/api/leaders': 'http://localhost:3000'
-    // },
+    proxy: {
+      '/restaurants': {
+        target: 'http://localhost:3000',
+      },
+      '/page': 'http://localhost:3000',
+      '/build': 'http://localhost:3000'
+    },
     static: {
       directory: path.join(__dirname, './client/components'),
       publicPath: '/'
     },
     compress: true,
     port: 8080,
-    hot: true,
+   
   },
   module: {
     rules: [

@@ -41,8 +41,12 @@ app.delete('/restaurants', restaurantController.deleteRestaurant, (req, res) => 
 // root
 app.use('/build', express.static(path.join(__dirname, '../build')));
 app.get('/', (req, res) => {
-  res.status(200).sendFile(path.resolve(__dirname, '../reviews.html'));
+  res.status(200).sendFile(path.resolve(__dirname, '../login.html'));
 });
+
+app.post('/page', (req, res) => {
+  res.status(200).sendFile(path.resolve(__dirname, '../reviews.html'))
+})
 
 app.post('/signup', userController.createUser, (req, res) => {
   // what should happen here on successful sign up?
