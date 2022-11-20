@@ -10,6 +10,7 @@ const initialState = {
   sync: {},
   update: {},
   remove: {},
+  edit: false,
 };
 
 const reducer = (state = initialState, action) => {
@@ -71,8 +72,16 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         restaurantList: newRestaurantList,
-        update: update
+        update: update,
+        edit: false
       };
+    }
+
+    case types.EDIT_BUTTON: {
+      return {
+        ...state,
+        edit: true
+      }
     }
 
     case types.DELETE_RESTAURANT: {

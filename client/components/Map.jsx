@@ -5,10 +5,10 @@ const style = {
   width: '100%', 
   height: '100%', 
   position: 'relative', 
-  'border-radius': "10px", 
-  'margin-top': "10px", 
+  borderRadius: "10px", 
+  marginTop: "10px", 
   border: '1px solid rgb(198, 224, 255)', 
-  'box-shadow': '5px 5px 5px rgba(0,0,0,0.1)'
+  boxShadow: '5px 5px 5px rgba(0,0,0,0.1)'
 }
 const containerStyle = {
   width: "400px", 

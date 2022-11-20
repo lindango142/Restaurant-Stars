@@ -182,14 +182,6 @@ nav {
   cursor: pointer;
 }
 
-#green {
-  color: green;
-}
-
-#red {
-  color: red
-}
-
 .innerbox {
   display: flex;
   align-items: center;
@@ -199,4 +191,19 @@ nav {
   align-self: flex-start;
   background-color: white;
 }
+
+.editButton {
+  background-color: rgb(228, 240, 251);
+  border: none;
+  border-radius: 5px;
+  align-self: center;
+  padding: 3px 20px;
+  box-shadow: 5px 5px 5px rgba(135, 135, 135, 0.1);
+}
+
+.editButton:hover {
+  cursor: pointer;
+}
+
+
 

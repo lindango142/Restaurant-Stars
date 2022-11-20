@@ -16,6 +16,10 @@ export const updateReviewActionCreator = (name, review) => ({
   payload: {name: name, review: review}
 });
 
+export const editActionCreator = () => ({
+  type: types.EDIT_BUTTON
+})
+
 export const deleteCardActionCreator = name =>  ({
   type: types.DELETE_RESTAURANT,
   payload: name

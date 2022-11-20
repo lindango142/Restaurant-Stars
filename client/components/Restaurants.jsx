@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Restaurants = ({restaurantList, updateRev, changeStatus, deleteCard, }) => { 
+const Restaurants = ({restaurantList, updateRev, changeStatus, deleteCard, edit, editActionCreator}) => { 
   // function for submitting review
   const reviewSub = (event) => {
     event.preventDefault();
@@ -22,6 +22,11 @@ const Restaurants = ({restaurantList, updateRev, changeStatus, deleteCard, }) =>
     event.preventDefault();
     deleteCard(restaurantList.name);
   }
+
+  const editClick = (event) => {
+    event.preventDefault();
+    editActionCreator()
+  }
   
   // render review if there is one
   const review = [];
@@ -38,7 +43,22 @@ const Restaurants = ({restaurantList, updateRev, changeStatus, deleteCard, }) =>
         <button id="add"> Add </button>
       </form>
     </div>
-  )};
+  )}
+  else if (edit === true) {
+    reviewForm.push(
+      <div>
+        <form id="reviewForm" onSubmit={reviewSub}>
+          <textarea id="reviewInput"></textarea>
+          <button id="add"> Add </button>
+        </form>
+      </div>
+    )
+  }
+
+  const editButton = [];
+  if (restaurantList.review !== '' && edit === false) {
+    editButton.push(<button class="editButton" onClick={editClick}>Edit</button>)
+  }
 
   // thumbs up or down buttons for status
   const recommendation = [];
@@ -69,7 +89,8 @@ const Restaurants = ({restaurantList, updateRev, changeStatus, deleteCard, }) =>
           <h3 id='name'><strong> {restaurantList.name} </strong></h3>
           <p id="city"> {restaurantList.address} </p>
           <p><strong>Status: </strong> {status} </p>
-          {review}
+            {review}
+            {editButton}
           {reviewForm}
         </div>
         <button id="delete" onClick={removeCard}>X</button>

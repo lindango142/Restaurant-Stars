@@ -10,7 +10,7 @@ const mapStateToProps = ({ restaurants }) => ({
   sync: restaurants.sync,
   update: restaurants.update,
   remove: restaurants.remove,
-  markers: restaurants.markers
+  edit: restaurants.edit
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);
@@ -32,6 +32,8 @@ const RestaurantsContainer = props => {
         updateRev={props.updateReviewActionCreator}
         changeStatus={props.changeStatusActionCreator}
         deleteCard={props.deleteCardActionCreator}
+        editActionCreator={props.editActionCreator}
+        edit={props.edit}
       />
     </div>
   );

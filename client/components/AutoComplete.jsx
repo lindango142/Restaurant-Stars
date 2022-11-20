@@ -46,7 +46,7 @@ const AutoComplete = ({addRestaurant, syncCards, sync, restaurantList}) => {
   return (
     <div className="mapContainer">
     <form onSubmit={submit}>
-      <label style={{'font-family': 'nunito'}}>Store: </label>
+      <label style={{fontFamily: 'nunito'}}>Store: </label>
       <input id="placeInput" ref={inputRef}/>
       <button id="addPlace"> Add </button>
     </form>

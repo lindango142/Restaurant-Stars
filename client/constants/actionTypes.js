@@ -6,3 +6,4 @@ export const DELETE_RESTAURANT = 'DELETE_RESTAURANT';
 export const UPDATE_REVIEW = 'UPDATE_REVIEW';
 export const SYNC_UPDATE = 'SYNC_UPDATE'
 export const SYNC_DELETE = 'SYNC_DELETE'
+export const EDIT_BUTTON = 'EDIT_BUTTON'
