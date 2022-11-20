@@ -7,10 +7,10 @@ const initialState = {
   restaurantList: [],
   status: 'not visited',
   review: '',
-  sync: {},
-  update: {},
+  update: [],
   remove: {},
-  markers: []
+  markers: [],
+  synced: true
 };
 
 const reducer = (state = initialState, action) => {
@@ -25,52 +25,46 @@ const reducer = (state = initialState, action) => {
           address: action.payload.address,
           status: state.status,
           review: state.review,
-          markers: state.markers.concat(action.payload.mark)
+          marks: action.payload.mark
         }),
-        sync: {
-          id: state.id + 1,
-          name: action.payload.name,
-          address: action.payload.address,
-          status: state.status,
-          review: state.review,
-          markers: state.markers.concat(action.payload.mark)
-        },
         id: state.id + 1,
         markers: state.markers.concat(action.payload.mark)
       };
-    }
+    };
 
     case types.CHANGE_STATUS: {
-      let update;
+      let update = [...state.update];
       const newRestaurantList = [...state.restaurantList];
       for (let i = 0; i < newRestaurantList.length; i++) {
         if (newRestaurantList[i].name === action.payload.name) {
           newRestaurantList[i].status = action.payload.status;
-          update = newRestaurantList[i]
+          update.push(newRestaurantList[i])
         }
       }
       return {
         ...state,
         restaurantList: newRestaurantList,
-        update: update
+        update: update,
+        synced: false
       };
-    }
+    };
     
     case types.UPDATE_REVIEW: {
-      let update;
+      let update = [...state.update];
       const newRestaurantList = [...state.restaurantList];
       for (let i = 0; i < newRestaurantList.length; i++) {
         if (newRestaurantList[i].name === action.payload.name) {
           newRestaurantList[i].review = action.payload.review;
-          update = newRestaurantList[i]
+          update.push(newRestaurantList[i])
         }
       }
       return {
         ...state,
         restaurantList: newRestaurantList,
-        update: update
+        update: update,
+        synced: false,
       };
-    }
+    };
 
     case types.DELETE_RESTAURANT: {
       let data;
@@ -89,11 +83,12 @@ const reducer = (state = initialState, action) => {
         remove: data,
         markers: marks
       };
-    }
+    };
 
     case types.SYNC_RESTAURANTS:
       return {
         ...state,
+        synced: true,
       };
 
     case types.LOAD_RESTAURANTS:
@@ -105,16 +100,19 @@ const reducer = (state = initialState, action) => {
     case types.SYNC_UPDATE:
       return {
         ...state,
-      }
+        synced: true,
+        update: []
+      };
 
     case types.SYNC_DELETE:
       return {
-        ...state
-      }
+        ...state,
+        synced: true,
+      };
 
     default: {
       return state;
-    }
+    };
   }
 };
 

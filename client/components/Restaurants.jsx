@@ -25,10 +25,13 @@ const Restaurants = ({restaurantList, updateRev, syncCards, sync, syncUpdate, ch
   const reviewForm = [];
   if (restaurantList.status !== 'not visited' && restaurantList.review === '') {
     reviewForm.push(
-    <form id="reviewForm" onSubmit={reviewSub}>
-      <textarea id="reviewInput"></textarea>
-      <button id="add"> Add </button>
-    </form>
+    <div>
+      <p id="reviewLabel"><strong>Review: </strong></p>
+      <form id="reviewForm" onSubmit={reviewSub}>
+        <textarea id="reviewInput"></textarea>
+        <button id="add"> Add </button>
+      </form>
+    </div>
   )};
 
   const recommendation = [];
@@ -51,7 +54,7 @@ const Restaurants = ({restaurantList, updateRev, syncCards, sync, syncUpdate, ch
   else if (restaurantList.status === 'not recommended') status.push(<span style={{color: 'red'}}>{restaurantList.status}</span>)
   else if (restaurantList.status === 'not visited') status.push(<span style={{color: 'gray'}}>{restaurantList.status}</span>)
   
-  syncUpdate();
+  // syncUpdate();
 
   return (
     <div className="marketBox">

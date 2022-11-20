@@ -29,10 +29,10 @@ app.get('/restaurants', restaurantController.getAllRestaurants, (req, res) => {
   res.status(200).json(res.locals.restaurants)
 })
 app.post('/restaurants', restaurantController.addRestaurant, (req, res) => {
-  res.status(200);
+  res.status(200).json(res.locals.status);
 });
 app.put('/restaurants', restaurantController.updateRestaurant, (req, res) => {
-  res.status(200);
+  res.status(200).json(res.locals.status);
 })
 app.delete('/restaurants', restaurantController.deleteRestaurant, (req, res) => {
   res.status(200);
@@ -41,7 +41,7 @@ app.delete('/restaurants', restaurantController.deleteRestaurant, (req, res) => 
 // root
 app.use('/build', express.static(path.join(__dirname, '../build')));
 app.get('/', (req, res) => {
-  res.status(200).sendFile(path.resolve(__dirname, '../login.html'));
+  res.status(200).sendFile(path.resolve(__dirname, '../reviews.html'));
 });
 
 app.post('/page', (req, res) => {

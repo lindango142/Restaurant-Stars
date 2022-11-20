@@ -18,23 +18,27 @@ restaurantController.addRestaurant = (req, res, next) => {
   // console.log(JSON.stringify(req.body))
   Restaurant.create(req.body, (err, restaurants) => {
     if (err) return next(err);
+    res.locals.status = 'finished'
     return next();
   })
 }
 
 restaurantController.updateRestaurant = (req, res, next) => {
-  // console.log(req.body)
-  Restaurant.findOneAndUpdate({ name: req.body.name }, { review: req.body.review, status: req.body.status }, (err, updated) => {
-    if (err) return next(err);
-    return next();
-  })
+  console.log(req.body)
+  for (let i = 0; i < req.body.length; i++) {
+    Restaurant.findOneAndUpdate({ name: req.body[i].name }, { review: req.body[i].review, status: req.body[i].status }, (err, updated) => {
+      if (err) return next(err);
+    })
+  }
+  res.locals.status = 'finished'
+  return next();
 }
 
 restaurantController.deleteRestaurant = (req, res, next) => {
   console.log(req.body, 'delete')
-  console.log('hi');
   Restaurant.findOneAndDelete({ name: req.body.name }, (err, updated) => {
     if (err) return next(err);
+    res.locals.status = 'finished'
     return next();
   })
 }

@@ -43,7 +43,8 @@ export const loadActionCreator = () => (dispatch) => {
 export const syncUpdate = () => (dispatch, getState) => {
   axios.put('/restaurants', getState().restaurants.update)
     .then(({ status }) => {
-      if (status === 200) dispatch({ type: types.SYNC_UPDATE });
+      console.log('finished')
+      dispatch({ type: types.SYNC_UPDATE });
     })
     .catch(console.error);
 }

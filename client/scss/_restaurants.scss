@@ -46,6 +46,10 @@ nav {
   flex-wrap: wrap;
 }
 
+#reviewLabel {
+  margin: 0;
+}
+
 #reviewForm {
   display: flex;
   align-items: center;
@@ -195,3 +199,4 @@ nav {
   align-self: flex-start;
   background-color: white;
 }
+
