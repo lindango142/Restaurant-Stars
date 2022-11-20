@@ -1,15 +1,15 @@
 const express = require('express');
 const path = require('path');
-// const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
 
-const userController = require('./controllers/userController');
+// const userController = require('./controllers/userController');
 const restaurantController = require('./controllers/restaurantController')
 
 const PORT = 3000;
 
 const app = express();
 
+// connecting the db
 const MONGO_URI = 'mongodb+srv://linda:z1MtjJuyUBREM1fJ@card.m1b2zzv.mongodb.net/?retryWrites=true&w=majority';
 mongoose.connect(MONGO_URI, {
   // options for the connect method to parse the URI
@@ -23,8 +23,8 @@ mongoose.connect(MONGO_URI, {
 
 app.use(express.json());
 app.use(express.urlencoded());
-// app.use(cookieParser())
 
+// requests from the front end
 app.get('/restaurants', restaurantController.getAllRestaurants, (req, res) => {
   res.status(200).json(res.locals.restaurants)
 })
@@ -35,7 +35,7 @@ app.put('/restaurants', restaurantController.updateRestaurant, (req, res) => {
   res.status(200).json(res.locals.status);
 })
 app.delete('/restaurants', restaurantController.deleteRestaurant, (req, res) => {
-  res.status(200);
+  res.status(200).json(res.locals.status);
 })
 
 // root
@@ -46,14 +46,6 @@ app.get('/', (req, res) => {
 
 app.post('/page', (req, res) => {
   res.status(200).sendFile(path.resolve(__dirname, '../reviews.html'))
-})
-
-app.post('/signup', userController.createUser, (req, res) => {
-  // what should happen here on successful sign up?
-  res.status(200)
-});
-app.get('/users', userController.getAllUsers, (req, res) => {
-  res.json(res.locals.users);
 })
 
 app.listen(PORT, ()=>{ console.log(`Listening on port ${PORT}...`); });

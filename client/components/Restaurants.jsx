@@ -1,27 +1,33 @@
 import React from 'react';
 
-const Restaurants = ({restaurantList, updateRev, syncCards, sync, syncUpdate, changeStatus, deleteCard, syncDelete, update, remove}) => { 
+const Restaurants = ({restaurantList, updateRev, changeStatus, deleteCard, }) => { 
+  // function for submitting review
   const reviewSub = (event) => {
     event.preventDefault();
     updateRev(restaurantList.name, event.target[0].value);
     event.target[0].value = ''
   }
+  // function for changing status to recommended
   const recommended = (event) => {
     event.preventDefault();
     changeStatus(restaurantList.name, 'recommended')
   }
+  // function for changing status to recommended
   const notRecommended = (event) => {
     event.preventDefault();
     changeStatus(restaurantList.name, 'not recommended')
   }
+  // function for changing status to recommended
   const removeCard = (event) => {
     event.preventDefault();
     deleteCard(restaurantList.name);
   }
   
+  // render review if there is one
   const review = [];
   if (restaurantList.review) review.push(<p><strong>Review: </strong> {restaurantList.review} </p>)
 
+  // add review form once status is updated
   const reviewForm = [];
   if (restaurantList.status !== 'not visited' && restaurantList.review === '') {
     reviewForm.push(
@@ -34,6 +40,7 @@ const Restaurants = ({restaurantList, updateRev, syncCards, sync, syncUpdate, ch
     </div>
   )};
 
+  // thumbs up or down buttons for status
   const recommendation = [];
   if (restaurantList.status === 'not visited') {
     recommendation.push(
@@ -49,6 +56,7 @@ const Restaurants = ({restaurantList, updateRev, syncCards, sync, syncUpdate, ch
     </button>
   )};
 
+  // render the current status of the restaurant
   const status = [];
   if (restaurantList.status === 'recommended') status.push(<span style={{color: 'green'}}>{restaurantList.status}</span>)
   else if (restaurantList.status === 'not recommended') status.push(<span style={{color: 'red'}}>{restaurantList.status}</span>)

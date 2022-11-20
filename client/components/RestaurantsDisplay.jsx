@@ -1,27 +1,22 @@
 import React, {useEffect} from 'react';
 import Restaurants from './Restaurants.jsx';
 
-const RestaurantsDisplay = props => {
+const RestaurantsDisplay = ({restaurantList, updateRev, changeStatus, deleteCard}) => {
+  // add all the cards in restaurant list array
   const cards = [];
-  for (let i = 0; i < props.restaurantList.length; i++) {
+  for (let i = 0; i < restaurantList.length; i++) {
     cards.push(
-    <Restaurants 
-      restaurantList={props.restaurantList[i]} 
-      updateRev={props.updateRev} 
-      syncCards={props.syncCards} 
-      sync={props.sync} 
-      syncUpdate={props.syncUpdate} 
-      changeStatus={props.changeStatus} 
-      deleteCard={props.deleteCard} 
-      syncDelete={props.syncDelete} 
-      update={props.update}
-      remove={props.remove}
-    />
+      <Restaurants 
+        restaurantList={restaurantList[i]} 
+        updateRev={updateRev} 
+        changeStatus={changeStatus} 
+        deleteCard={deleteCard} 
+      />
     );
   }
   return (
     <div className="displayBox">
-      <h2 style={{'font-family': 'nunito', 'color': 'rgb(145, 143, 143)', }}>Restaurants</h2>
+      <h2 style={{'font-family': 'nunito', 'color': 'rgb(145, 143, 143)'}}>Restaurants</h2>
       <div className='cards'>
         {cards} 
       </div>

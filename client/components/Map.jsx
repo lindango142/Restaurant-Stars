@@ -1,26 +1,22 @@
-import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
-import React, {Component} from 'react';
+import { Map, Marker } from 'google-maps-react';
+import React, { Component } from 'react';
 
 const style = {
-  width: '95%',
-  height: '50%',
-  'border-radius': '10px'
+  width: '100%', 
+  height: '100%', 
+  position: 'relative', 
+  'border-radius': "10px", 
+  'margin-top': "10px", 
+  border: '1px solid rgb(198, 224, 255)', 
+  'box-shadow': '5px 5px 5px rgba(0,0,0,0.1)'
 }
 const containerStyle = {
-  width: '100%',
-  height: '100%'
+  width: "400px", 
+  height: '400px', 
+  position: 'relative'
 }
  
-export class MapContainer extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      showingInfoWindow: false,
-      activeMarker: {},
-      selectedPlace: {},
-    };
-  }
-  
+export class MapContainer extends Component { 
   render() {
     const marks = [];
     for (let i = 0; i < this.props.restaurantList.length; i++) {
@@ -30,19 +26,11 @@ export class MapContainer extends Component {
         <Map 
           google={window.google} 
           zoom={8} 
-          style={{width: '100%', height: '100%', position: 'relative', 'border-radius': "10px", 'margin-top': "10px", border: '1px solid rgb(198, 224, 255)', 'box-shadow': '5px 5px 5px rgba(0,0,0,0.1)'}} 
-          containerStyle={{width: "400px", height: '400px', position: 'relative'}}
+          style={style} 
+          containerStyle={containerStyle}
           initialCenter={{lat: 34.06207, lng:-118.03183}}>
           {marks}
-          <InfoWindow
-            marker={this.state.activeMarker}
-            visible={this.state.showingInfoWindow}>
-              <div>
-                <h1>{this.state.selectedPlace.name}</h1>
-              </div>
-          </InfoWindow>
         </Map>
-
     );
   }
 }

@@ -10,7 +10,6 @@ const initialState = {
   sync: {},
   update: {},
   remove: {},
-  markers: []
 };
 
 const reducer = (state = initialState, action) => {
@@ -19,6 +18,7 @@ const reducer = (state = initialState, action) => {
       // return updated state
       return {
         ...state,
+        // array of info from the restaurant card 
         restaurantList: state.restaurantList.concat({
           id: state.id + 1,
           name: action.payload.name,
@@ -27,6 +27,7 @@ const reducer = (state = initialState, action) => {
           review: state.review,
           marks: action.payload.mark
         }),
+        // object that will be passed into post request to add restaurant to db
         sync: {
           id: state.id + 1,
           name: action.payload.name,
@@ -36,7 +37,6 @@ const reducer = (state = initialState, action) => {
           marks: action.payload.mark
         },
         id: state.id + 1,
-        markers: state.markers.concat(action.payload.mark)
       };
     }
 
@@ -45,13 +45,16 @@ const reducer = (state = initialState, action) => {
       const newRestaurantList = [...state.restaurantList];
       for (let i = 0; i < newRestaurantList.length; i++) {
         if (newRestaurantList[i].name === action.payload.name) {
+          // if the names match, change the status of that restaurant in the list
           newRestaurantList[i].status = action.payload.status;
+          // update will be an object of the restaurant that was updated
           update = newRestaurantList[i]
         }
       }
       return {
         ...state,
         restaurantList: newRestaurantList,
+        // update passed into put request to the db
         update: update
       };
     }
@@ -74,12 +77,10 @@ const reducer = (state = initialState, action) => {
 
     case types.DELETE_RESTAURANT: {
       let data;
-      const marks = [];
       const clone = [];
       for (let i = 0; i < state.restaurantList.length; i++) {
         if (state.restaurantList[i].name !== action.payload) {
           clone.push(state.restaurantList[i]);
-          marks.push(state.markers[i])
         }
         if (state.restaurantList[i].name === action.payload) data = state.restaurantList[i];
       }
@@ -87,15 +88,8 @@ const reducer = (state = initialState, action) => {
         ...state,
         restaurantList: clone,
         remove: data,
-        markers: marks
       };
     }
-
-    case types.SYNC_RESTAURANTS:
-      return {
-        ...state,
-        sync: {}
-      };
 
     case types.LOAD_RESTAURANTS:
       return {
@@ -103,10 +97,16 @@ const reducer = (state = initialState, action) => {
         restaurantList: action.payload,
       };
 
+    case types.SYNC_RESTAURANTS:
+      return {
+        ...state,
+        sync: {}
+      };
+
     case types.SYNC_UPDATE:
       return {
         ...state,
-        update: {},
+        update: {}
       }
 
     case types.SYNC_DELETE:

@@ -4,18 +4,16 @@ const restaurantController = {};
 
 restaurantController.getAllRestaurants = (req, res, next) => {
   Restaurant.find({}, (err, restaurants) => {
-    // if a database error occurs, call next with the error message passed in
-    // for the express global error handler to catch
+    // invoke global error if error
     if (err) return next('Error in userController.getAllUsers: ' + JSON.stringify(err));
-    
-    // store retrieved users into res.locals and move on to next middleware
+    // store the restaurants found into res.locals
     res.locals.restaurants = restaurants;
     return next();
   });
 };
 
 restaurantController.addRestaurant = (req, res, next) => {
-  // console.log(JSON.stringify(req.body))
+  // console.log(req.body)
   Restaurant.create(req.body, (err, restaurants) => {
     if (err) return next(err);
     res.locals.status = 'done'
