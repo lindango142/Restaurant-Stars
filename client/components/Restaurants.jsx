@@ -53,8 +53,6 @@ const Restaurants = ({restaurantList, updateRev, syncCards, sync, syncUpdate, ch
   if (restaurantList.status === 'recommended') status.push(<span style={{color: 'green'}}>{restaurantList.status}</span>)
   else if (restaurantList.status === 'not recommended') status.push(<span style={{color: 'red'}}>{restaurantList.status}</span>)
   else if (restaurantList.status === 'not visited') status.push(<span style={{color: 'gray'}}>{restaurantList.status}</span>)
-  
-  // syncUpdate();
 
   return (
     <div className="marketBox">

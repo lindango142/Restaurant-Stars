@@ -22,7 +22,7 @@ export const deleteCardActionCreator = name =>  ({
 });
 
 export const syncActionCreator = () => (dispatch, getState) => {
-  axios.post('/restaurants', getState().restaurants.restaurantList)
+  axios.post('/restaurants', getState().restaurants.sync)
     .then(({ status }) => {
       if (status === 200) dispatch({ type: types.SYNC_RESTAURANTS });
     })
@@ -43,15 +43,13 @@ export const loadActionCreator = () => (dispatch) => {
 export const syncUpdate = () => (dispatch, getState) => {
   axios.put('/restaurants', getState().restaurants.update)
     .then(({ status }) => {
-      console.log('finished')
-      dispatch({ type: types.SYNC_UPDATE });
+      if (status === 200) dispatch({ type: types.SYNC_UPDATE });
     })
     .catch(console.error);
 }
 
 export const syncDelete = (input) => (dispatch, getState) => {
-  console.log(input)
-  axios.delete('/restaurants', { data: input})
+  axios.delete('/restaurants', { data: getState().restaurants.remove})
     .then(({ status }) => {
       if (status === 200) dispatch({ type: types.SYNC_DELETE });
     })

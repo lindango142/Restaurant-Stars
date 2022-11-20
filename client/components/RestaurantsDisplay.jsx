@@ -21,10 +21,7 @@ const RestaurantsDisplay = props => {
   }
   return (
     <div className="displayBox">
-      <span>
-        <h2 style={{'font-family': 'nunito', 'color': 'rgb(145, 143, 143)', }}>Restaurants</h2>
-        <button onClick={props.syncUpdate} disabled={props.synced}>sync</button>
-      </span>
+      <h2 style={{'font-family': 'nunito', 'color': 'rgb(145, 143, 143)', }}>Restaurants</h2>
       <div className='cards'>
         {cards} 
       </div>

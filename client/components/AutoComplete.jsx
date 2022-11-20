@@ -36,7 +36,9 @@ const AutoComplete = (props) => {
     event.target[0].value = ''
   };
   
-  props.syncCards();
+  if (Object.keys(props.sync).length) {
+    props.syncCards();
+  }
 
  return (
    <div className="mapContainer">
