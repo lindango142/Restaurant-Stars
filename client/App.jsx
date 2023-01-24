@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import MainContainer from './containers/MainContainer.jsx';
+import Login from './components/Login.jsx'
 
 class App extends Component {
   constructor(props) {
@@ -9,7 +11,10 @@ class App extends Component {
   render() {
     return(
       <div>
-        <MainContainer/>
+        <Routes>
+          <Route path='/' element={<Login/>} />
+          <Route path='/main' element={<MainContainer/>} />
+        </Routes>
       </div>
     );
   }

@@ -10,7 +10,8 @@ module.exports = {
   mode: 'development',
   plugins: [
     new HtmlWebpackPlugin({
-      template: "./login.html", 
+      inject: false,
+      template: "./reviews.html", 
     }),
   ],
   devServer: {
