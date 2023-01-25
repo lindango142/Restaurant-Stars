@@ -49,6 +49,6 @@ app.post('/page', (req, res) => {
   res.status(200).sendFile(path.resolve(__dirname, '../reviews.html'))
 })
 
-app.listen(PORT, ()=>{ console.log(`Listening on port ${PORT}...`); });
+let appServer = app.listen(PORT, () => console.log(`Listening on port ${PORT}...`));
 
-module.exports = app;
+module.exports = appServer;

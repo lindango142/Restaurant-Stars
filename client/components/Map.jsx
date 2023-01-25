@@ -34,8 +34,6 @@ const MapContainer = (props) => {
     marker.setMap(map);
   }
 
-  console.log(props.restaurantList[0].marks)
-
   return (
     <div style={containerStyle}>
       <div ref={ref} style={style}/>
