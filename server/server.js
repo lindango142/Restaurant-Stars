@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
+require('dotenv').config()
 
 // const userController = require('./controllers/userController');
 const restaurantController = require('./controllers/restaurantController')
@@ -10,7 +11,7 @@ const PORT = 3000;
 const app = express();
 
 // connecting the db
-const MONGO_URI = 'mongodb+srv://linda:z1MtjJuyUBREM1fJ@card.m1b2zzv.mongodb.net/?retryWrites=true&w=majority';
+const MONGO_URI = process.env.MONGO_URI;
 mongoose.connect(MONGO_URI, {
   // options for the connect method to parse the URI
   useNewUrlParser: true,

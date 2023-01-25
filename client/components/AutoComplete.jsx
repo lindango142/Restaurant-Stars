@@ -1,9 +1,7 @@
 import React, { useRef, useEffect, Component } from "react";
 import { connect } from 'react-redux';
-// import actions from action creators file
 import * as actions from '../actions/actions';
-import { MapContainer } from "./Map.jsx";
-// import child components...
+import MapContainer from "./Map.jsx";
 
 let input;
 let city; 

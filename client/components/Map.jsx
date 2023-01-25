@@ -1,5 +1,4 @@
-import { Map, Marker } from 'google-maps-react';
-import React, { Component } from 'react';
+import React from 'react';
 
 const style = {
   width: '100%', 
@@ -16,23 +15,32 @@ const containerStyle = {
   position: 'relative'
 }
  
-export class MapContainer extends Component { 
-  render() {
-    const marks = [];
-    for (let i = 0; i < this.props.restaurantList.length; i++) {
-      marks.push(<Marker position={this.props.restaurantList[i].marks}/>)
+const MapContainer = (props) => { 
+  const ref = React.useRef(null);
+  const [map, setMap] = React.useState();
+  var latlng = new google.maps.LatLng(34.06207, -118.03183);
+
+  React.useEffect(() => {
+    if (ref.current && !map) {
+      setMap(new window.google.maps.Map(ref.current, {zoom: 8, center: latlng}));
     }
-    return (
-        <Map 
-          google={window.google} 
-          zoom={8} 
-          style={style} 
-          containerStyle={containerStyle}
-          initialCenter={{lat: 34.06207, lng:-118.03183}}>
-          {marks}
-        </Map>
-    );
+  }, [ref, map]);
+
+  for (let i = 0; i < props.restaurantList.length; i++) {
+    var marker = new google.maps.Marker({
+      position: props.restaurantList[i].marks,
+      title:"Hello World!"
+    });
+    marker.setMap(map);
   }
+
+  console.log(props.restaurantList[0].marks)
+
+  return (
+    <div style={containerStyle}>
+      <div ref={ref} style={style}/>
+    </div>
+  )
 }
  
 export default MapContainer

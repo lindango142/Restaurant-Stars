@@ -5,14 +5,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Reviews</title>
         <style>
-            @import url('https://fonts.googleapis.com/css2?family=Chicle&family=Grand+Hotel&family=Great+Vibes&family=Nunito:wght@800&display=swap');
-            </style>
+          @import url('https://fonts.googleapis.com/css2?family=Chicle&family=Grand+Hotel&family=Great+Vibes&family=Nunito:wght@800&display=swap');
+        </style>
     </head>
     <body>
         <!-- Hang React App Here -->
         <div id="contents"></div>
         <!-- LOAD SCRIPTS -->
-        <script src="https://maps.googleapis.com/maps/api/js?key=&libraries=places&callback=initMap"></script>
-        <script src="build/main.js"></script>
+        <script src="<%= htmlWebpackPlugin.options.apiUrl %>"></script>
     </body>
 </html>

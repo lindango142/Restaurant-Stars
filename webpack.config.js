@@ -1,5 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+require('dotenv').config();
+const api_key = process.env.GOOGLE_MAP_API
 
 module.exports = {
   entry: './client/index.js',
@@ -10,8 +12,8 @@ module.exports = {
   mode: 'development',
   plugins: [
     new HtmlWebpackPlugin({
-      inject: false,
       template: "./reviews.html", 
+      apiUrl: `https://maps.googleapis.com/maps/api/js?key=${api_key}&libraries=places&callback=initMap`
     }),
   ],
   devServer: {
