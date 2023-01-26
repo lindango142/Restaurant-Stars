@@ -1,16 +1,12 @@
 import React from 'React';
 import { Provider } from 'react-redux';
-import { Router, BrowserRouter } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import userEvent from '@testing-library/user-event'
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
-import regeneratorRuntime from 'regenerator-runtime';
-import { Parser } from 'webpack';
-import { createMemoryHistory } from 'history';
-import { initialize, Map, Marker, mockInstances } from "@googlemaps/jest-mocks";
+import { render } from '@testing-library/react';
+import { initialize } from "@googlemaps/jest-mocks";
 
 import App from '../client/App';
 import Restaurants from '../client/components/Restaurants';
-import AutoComplete from '../client/components/AutoComplete';
 import store from '../client/store';
 
 describe('Unit testing React components', () => {
@@ -85,6 +81,13 @@ describe('React-Redux integration tests', () => {
       expect(button[0]).toHaveTextContent('Sign in')
     });
 
+    test('The page loads with Sign in inputs', async () => {
+      const inputs = await app.findAllByRole('textbox');
+      expect(inputs.length).toBe(1);
+      const passwordField = app.getByLabelText("Password");
+      expect(passwordField).toBeInTheDocument();
+    });
+
     test('The home page loads when sign in button is clicked', async () => {
       const button = await app.findAllByRole('button');
       userEvent.click(button[0]);
@@ -93,23 +96,4 @@ describe('React-Redux integration tests', () => {
     });
   });
 
-  describe('Adding Restaurant Reviews', () => {
-
-    beforeEach(async () => {
-      const app = await render(
-        <Provider store={store}>
-          <BrowserRouter>
-            <App />
-          </BrowserRouter>
-        </Provider>);
-    });
-
-    test('AutoComplete adds new Restaurant Reviews', () => {
-
-    });
-
-    test('Displays updated with courrect count', () => {
-
-    });
-  });
 });

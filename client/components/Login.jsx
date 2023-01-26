@@ -12,10 +12,10 @@ const Login = () => {
     <div class="signInBox">
       <p id="signInTitle">Sign in</p>
         <form class="signInForm">
-          <p class="signInP">Username</p>
-          <input class="signInInput" name="username" type="text" placeholder="username"></input>
-          <p class="signInP">Password</p>
-          <input class="signInInput" name="password" type="password"></input>
+          <label for='username' class="signInP">Username</label>
+          <input class="signInInput" id='username' name="username" type="text" placeholder="username"></input>
+          <label for='password' class="signInP">Password</label>
+          <input class="signInInput" id="password" name="password" type="password" placeholder="password"></input>
           <button onClick={handleSubmit} type="submit">Sign in</button>
         </form>
     </div>
