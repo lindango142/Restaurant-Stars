@@ -10,8 +10,15 @@ const PORT = 3000;
 
 const app = express();
 
+let MONGO_URI;
+
 // connecting the db
-const MONGO_URI = process.env.MONGO_URI;
+if (process.env.NODE_ENV === 'test') {
+  MONGO_URI = process.env.TEST_MONGO_URI
+} else {
+  MONGO_URI = process.env.MONGO_URI
+}
+
 mongoose.connect(MONGO_URI, {
   // options for the connect method to parse the URI
   useNewUrlParser: true,
@@ -48,6 +55,19 @@ app.get('/', (req, res) => {
 app.post('/page', (req, res) => {
   res.status(200).sendFile(path.resolve(__dirname, '../reviews.html'))
 })
+
+app.use((err, req, res, next) => {
+  const defaultErr = {
+    log: 'Express error handler caught unknown middleware error',
+    status: 400,
+    message: { err: 'An error occurred' }, 
+  };
+  const errorObj = Object.assign(defaultErr, err);
+  console.log(errorObj.log);
+  res.locals.message = errorObj.message; 
+  // change to json
+  return res.status(errorObj.status).json({error: res.locals.message});
+});
 
 let appServer = app.listen(PORT, () => console.log(`Listening on port ${PORT}...`));
 
