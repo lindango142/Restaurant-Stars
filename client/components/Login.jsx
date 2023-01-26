@@ -9,13 +9,13 @@ const Login = () => {
   };
 
   return (
-    <div class="signInBox">
+    <div className="signInBox">
       <p id="signInTitle">Sign in</p>
-        <form class="signInForm">
-          <label for='username' class="signInP">Username</label>
-          <input class="signInInput" id='username' name="username" type="text" placeholder="username"></input>
-          <label for='password' class="signInP">Password</label>
-          <input class="signInInput" id="password" name="password" type="password" placeholder="password"></input>
+        <form className="signInForm">
+          <label for='username' className="signInP">Username</label>
+          <input className="signInInput" id='username' name="username" type="text" placeholder="username"></input>
+          <label for='password' className="signInP">Password</label>
+          <input className="signInInput" id="password" name="password" type="password" placeholder="password"></input>
           <button onClick={handleSubmit} type="submit">Sign in</button>
         </form>
     </div>
