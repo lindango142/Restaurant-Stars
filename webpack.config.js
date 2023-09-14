@@ -9,7 +9,7 @@ module.exports = {
     path: path.resolve(__dirname, 'build'),
     filename: '[name].js',
   },
-  mode: 'development',
+  mode: process.env.NODE_ENV,
   plugins: [
     new HtmlWebpackPlugin({
       template: "./reviews.html", 

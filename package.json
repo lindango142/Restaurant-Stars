@@ -2,11 +2,11 @@
   "name": "solo-project",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
-    "start": "export NODE_ENV=development; nodemon server/server.js",
-    "build": "webpack",
-    "dev": "webpack serve --open",
+    "start": "nodemon ./server/server.js",
+    "dev": "NODE_ENV=development webpack-dev-server --open & npm start",
+    "build": "NODE_ENV=production webpack",
     "test": "jest --verbose"
   },
   "keywords": [],

@@ -1,14 +1,10 @@
-import React, { useRef, useEffect, Component } from "react";
-import { connect } from 'react-redux';
-import * as actions from '../actions/actions';
+import React, { useRef, useEffect, useState } from "react";
 import MapContainer from "./Map.jsx";
-
-let input;
-let city; 
 
 const AutoComplete = ({addRestaurant, syncCards, sync, restaurantList}) => {
   const autoCompleteRef = useRef();
   const inputRef = useRef();
+  const [place, setPlace] = useState();
 
   // what you want from the google map api
   const options = {
@@ -23,18 +19,18 @@ const AutoComplete = ({addRestaurant, syncCards, sync, restaurantList}) => {
       options
     );
     autoCompleteRef.current.addListener("place_changed", async function () {
-      const place = await autoCompleteRef.current.getPlace();
-      input = { place };
-        for (let i = 0; i < input.place.address_components.length; i++) {
-          if (input.place.address_components[i].types[0] === 'locality') city = input.place.address_components[i].long_name
-        }
+      await setPlace(autoCompleteRef.current.getPlace());
     });
   }, []);
 
   // function for adding a restaurant to the restaurant list
   const submit = (event) => {
     event.preventDefault();
-    addRestaurant(input.place.name, city, { lat: input.place.geometry.location.lat(), lng: input.place.geometry.location.lng()});
+    let city
+    for (let i = 0; i < place.address_components.length; i++) {
+      if (place.address_components[i].types[0] === 'locality') city = place.address_components[i].long_name
+    }
+    addRestaurant(place.name, city, { lat: place.geometry.location.lat(), lng: place.geometry.location.lng()});
     event.target[0].value = ''
   };
   
