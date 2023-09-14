@@ -20,7 +20,7 @@ const Restaurants = ({restaurantList, updateRev, changeStatus, deleteCard, edit,
   // function for changing status to recommended
   const removeCard = (event) => {
     event.preventDefault();
-    deleteCard(restaurantList.name);
+    deleteCard(restaurantList._id);
   }
 
   const editClick = (event) => {

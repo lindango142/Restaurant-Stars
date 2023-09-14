@@ -88,10 +88,10 @@ const reducer = (state = initialState, action) => {
       let data;
       const clone = [];
       for (let i = 0; i < state.restaurantList.length; i++) {
-        if (state.restaurantList[i].name !== action.payload) {
+        if (state.restaurantList[i]._id !== action.payload) {
           clone.push(state.restaurantList[i]);
         }
-        if (state.restaurantList[i].name === action.payload) data = state.restaurantList[i];
+        if (state.restaurantList[i]._id === action.payload) data = state.restaurantList[i];
       }
       return {
         ...state,

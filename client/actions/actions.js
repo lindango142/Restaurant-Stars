@@ -20,9 +20,9 @@ export const editActionCreator = () => ({
   type: types.EDIT_BUTTON
 })
 
-export const deleteCardActionCreator = name =>  ({
+export const deleteCardActionCreator = id =>  ({
   type: types.DELETE_RESTAURANT,
-  payload: name
+  payload: id
 });
 
 export const syncActionCreator = () => (dispatch, getState) => {
